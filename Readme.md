@@ -52,9 +52,9 @@ Ensure you have the following installed:
 ```bash
 git clone https://github.com/your-username/sign-language-recognition.git
 cd sign-language-recognition
+```
 
-
-2️⃣ Backend Setup
+### 2️⃣ Backend Setup
 
 Create Virtual Environment (Recommended)
 
@@ -86,7 +86,7 @@ SERVER_PORT=5000
 
 ---
 
-3️⃣ Frontend Setup
+### 3️⃣ Frontend Setup
 
 cd frontend
 npm install
@@ -94,7 +94,7 @@ npm install
 
 ---
 
-4️⃣ Run the Application
+### 4️⃣ Run the Application
 
 Start Backend Server:
 
