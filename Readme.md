@@ -52,27 +52,32 @@ Ensure you have the following installed:
 ```bash
 git clone https://github.com/your-username/sign-language-recognition.git
 cd sign-language-recognition
+
 ```
+
+---
+
 
 ### 2️⃣ Backend Setup
 
 Create Virtual Environment (Recommended)
 
 Windows:
+```bash
 
 python -m venv sign_env
 sign_env\Scripts\activate
-
+```
 macOS/Linux:
-
+```bash
 python3 -m venv sign_env
 source sign_env/bin/activate
-
+```
 Install Python Dependencies
-
+```bash
 cd backend
 pip install -r requirements.txt
-
+```
 Environment Configuration
 
 Create a .env file inside the backend/ directory:
@@ -87,32 +92,32 @@ SERVER_PORT=5000
 ---
 
 ### 3️⃣ Frontend Setup
-
+```bash
 cd frontend
 npm install
-
+```
 
 ---
 
 ### 4️⃣ Run the Application
 
 Start Backend Server:
-
+```bash
 cd backend
 python app.py
-
+```
 Server runs on → http://localhost:5000
 
 Start Frontend Server:
-
+```bash
 cd frontend
 npm run dev
-
+```
 Frontend runs on → http://localhost:3000
 
 
 ---
-
+```bash
 📁 Project Structure
 
 sign-language-recognition/
@@ -135,7 +140,7 @@ sign-language-recognition/
 │   └── public/
 │
 └── README.md
-
+```
 
 ---
 
