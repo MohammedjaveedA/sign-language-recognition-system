@@ -1,171 +1,167 @@
-🌐 Sign Language Recognition & Translation System
-A real-time sign language recognition system that uses computer vision and machine learning to detect hand signs and translate them into multiple languages. Built with React frontend, Flask backend, and MediaPipe for hand tracking.
+# 🌐 Sign Language Recognition & Translation System
 
-🚀 Features
-Real-time Sign Recognition: Detect hand signs using webcam with live video feed
+A *real-time sign language recognition system* that uses *computer vision* and *machine learning* to detect hand signs and translate them into multiple languages.  
 
-Multi-language Translation: Translate recognized signs into 15+ languages
+Built with *React (frontend), **Flask (backend), and **MediaPipe (hand tracking)*.
 
-Text-to-Speech: Speak both original and translated text
+---
 
+## 🚀 Features
 
-🛠 Tech Stack
-Frontend
-React - Modern UI framework
+- 🎥 *Real-time Sign Recognition* — Detects hand signs using a live webcam feed.  
+- 🌍 *Multi-language Translation* — Translates recognized signs into multiple languages.  
+- 🔊 *Text-to-Speech* — Speaks both the original and translated text aloud.  
 
-Socket.IO Client - Real-time communication
+---
 
-CSS3 - Responsive styling with animations
+## 🛠 Tech Stack
 
-Backend
-Flask - Python web framework
+*Frontend*
+- ⚛ React — Modern UI framework  
+- 🔌 Socket.IO Client — Real-time communication  
+- 🎨 CSS3 — Responsive styling & animations  
 
-Socket.IO - WebSocket communication
+*Backend*
+- 🐍 Flask — Python web framework  
+- 🔄 Socket.IO — WebSocket communication  
+- ✋ MediaPipe — Hand landmark detection  
+- 📷 OpenCV — Computer vision processing  
+- 🔥 PyTorch — Deep learning model  
+- 🌐 Google Translate API — Translation service  
 
-MediaPipe - Hand landmark detection
+*Machine Learning*
+- 🧠 CNN Model — Custom neural network for sign classification  
+- ✋ MediaPipe Hands — Real-time hand tracking  
+- 📊 Scikit-learn — Data preprocessing & evaluation  
 
-OpenCV - Computer vision processing
+---
 
-PyTorch - Deep learning model
+## 📋 Prerequisites
 
-Google Translate API - Free translation service
+Ensure you have the following installed:
+- [Python 3.8+](https://www.python.org/downloads/)
+- [Node.js 14+](https://nodejs.org/)
+- [Git](https://git-scm.com/)
+- A *webcam*
 
-Machine Learning
-CNN Model - Custom neural network for sign classification
+---
 
-MediaPipe Hands - Real-time hand tracking
+## 🚀 Quick Start
 
-Scikit-learn - Data preprocessing and evaluation
-
-📋 Prerequisites
-Before you begin, ensure you have the following installed:
-
-Python 3.8+ Download here
-
-Node.js 14+ Download here
-
-Webcam - For real-time sign detection
-
-Git - For version control
-
-🚀 Quick Start
-1. Clone the Repository
-bash
+### 1️⃣ Clone the Repository
+```bash
 git clone https://github.com/your-username/sign-language-recognition.git
 cd sign-language-recognition
-2. Backend Setup
+
+
+2️⃣ Backend Setup
+
 Create Virtual Environment (Recommended)
-bash
-# Windows
+
+Windows:
+
 python -m venv sign_env
 sign_env\Scripts\activate
 
-# macOS/Linux
+macOS/Linux:
+
 python3 -m venv sign_env
 source sign_env/bin/activate
+
 Install Python Dependencies
-bash
+
 cd backend
 pip install -r requirements.txt
-Environment Configuration
-Create a .env file in the backend directory:
 
-bash
-# Backend/.env
+Environment Configuration
+
+Create a .env file inside the backend/ directory:
+
+# backend/.env
 DEFAULT_LANGUAGE=en
 FLASK_ENV=development
 SERVER_HOST=0.0.0.0
 SERVER_PORT=5000
-3. Frontend Setup
-bash
+
+
+---
+
+3️⃣ Frontend Setup
+
 cd frontend
 npm install
-4. Run the Application
-Start Backend Server
-bash
+
+
+---
+
+4️⃣ Run the Application
+
+Start Backend Server:
+
 cd backend
 python app.py
-The backend will start on http://localhost:5000
 
-Start Frontend Development Server
-bash
+Server runs on → http://localhost:5000
+
+Start Frontend Server:
+
 cd frontend
 npm run dev
-The frontend will start on http://localhost:3000
+
+Frontend runs on → http://localhost:3000
+
+
+---
 
 📁 Project Structure
-text
+
 sign-language-recognition/
 ├── backend/
-│   ├── .env                          # Environment variables
-│   ├── app.py                        # Main Flask application
-│   ├── translation_service.py        # Multi-language translation
-│   ├── train_model.py               # Model training script
-│   ├── collect_data.py              # Data collection utility
-│   ├── realtime_recognition.py      # Real-time recognition
-│   ├── image_preprocessing.py       # Image enhancement
-│   ├── requirements.txt             # Python dependencies
-│   └── sign_language_model.pkl      # Trained model
+│   ├── .env                     # Environment variables
+│   ├── app.py                   # Main Flask application
+│   ├── translation_service.py   # Multi-language translation logic
+│   ├── train_model.py           # Model training script
+│   ├── collect_data.py          # Data collection utility
+│   ├── realtime_recognition.py  # Real-time recognition
+│   ├── image_preprocessing.py   # Image enhancement
+│   ├── requirements.txt         # Python dependencies
+│   └── sign_language_model.pkl  # Trained CNN model
+│
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx                  # Main React component
-│   │   └── App.css                  # Styling
-│   ├── package.json                 # Node dependencies
+│   │   ├── App.jsx              # Main React component
+│   │   └── App.css              # Styling
+│   ├── package.json             # Node dependencies
 │   └── public/
+│
 └── README.md
+
+
+---
+
 🎯 Usage Guide
-1. Starting Recognition
-Click "Start Recognition" to begin camera feed
 
-Ensure proper lighting and clear hand visibility
+▶ Starting Recognition
 
-Position hand within camera frame
+1. Click "Start Recognition" to begin the camera feed.
 
-2. Using Translation
-Select target language from dropdown
 
-Show hand sign to camera
+2. Ensure good lighting and clear hand visibility.
 
-Click "Translate Current Sign" for instant translation
 
-Use "Speak" buttons for audio output
+3. Keep your hand inside the camera frame.
 
-3. Adding New Signs
-Method 1: Using Data Collection Tool
-bash
-cd backend
-python collect_data.py
-Follow on-screen instructions to capture new sign images.
 
-Method 2: Manual Dataset Creation
-Create folder in sign_data/your_sign_name/
 
-Add training images (JPG/PNG)
+🌍 Using Translation
 
-Retrain model: python train_model.py
+1. Select target language from the dropdown.
 
-4. Supported Languages
-🇺🇸 English | 🇪🇸 Spanish | 🇫🇷 French | 🇩🇪 German
 
-🇮🇹 Italian | 🇵🇹 Portuguese | 🇷🇺 Russian | 🇨🇳 Chinese
+2. Show a hand sign to the camera.
 
-🇯🇵 Japanese | 🇰🇷 Korean | 🇦🇪 Arabic | 🇮🇳 Hindi
 
-🇧🇩 Bengali | 🇮🇳 Tamil | 🇮🇳 Telugu | 🇮🇳 Malayalam
+3. Click "Translate Current Sign" for instant translation.
 
-🔧 Advanced Configuration
-Model Training
-To retrain the model with new data:
 
-bash
-cd backend
-python train_model.py
-The system will:
-
-Scan sign_data/ directory for training data
-
-Extract hand landmarks using MediaPipe
-
-Train CNN model with new classes
-
-Save updated model automatically
+4. Use "Speak" buttons for audio output.
