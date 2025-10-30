@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\FINAL_YEAR_PROJECT\sign-language-recognition\Backend\sign_env"
+VIRTUAL_ENV="D:\FINAL_YEAR_PROJECT\sign-language-recognition-system\Backend\sign_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

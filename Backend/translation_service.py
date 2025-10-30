@@ -12,6 +12,11 @@ class TranslationService:
     def __init__(self):
         self.supported_languages = {
             'en': 'English',
+            'ka': 'Kannada',
+            'hi': 'Hindi',
+            'ta': 'Tamil',
+            'te': 'Telugu',
+            'ml': 'Malayalam',
             'es': 'Spanish', 
             'fr': 'French',
             'de': 'German',
@@ -22,11 +27,7 @@ class TranslationService:
             'ja': 'Japanese',
             'ko': 'Korean',
             'ar': 'Arabic',
-            'hi': 'Hindi',
             'bn': 'Bengali',
-            'ta': 'Tamil',
-            'te': 'Telugu',
-            'ml': 'Malayalam'
         }
         
         # Get default language from .env or use English as fallback
@@ -133,6 +134,20 @@ class TranslationService:
                 '2': '2',
                 '3': '3'
             },
+            'ka': {
+             'hello': 'ನಮಸ್ಕಾರ',
+             'thank you': 'ಧನ್ಯವಾದಗಳು',
+             'thanks': 'ಧನ್ಯವಾದಗಳು',
+              'yes': 'ಹೌದು',
+            'no': 'ಇಲ್ಲ',
+            'please': 'ದಯವಿಟ್ಟು',
+            'sorry': 'ಕ್ಷಮಿಸಿ',
+            'goodbye': 'ವಿದಾಯ',
+            '1': '೧',
+            '2': '೨',
+            '3': '೩'
+},
+
             'hi': {
                 'hello': 'नमस्ते',
                 'thank you': 'धन्यवाद',

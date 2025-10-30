@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\FINAL_YEAR_PROJECT\sign-language-recognition\Backend\sign_env
+set VIRTUAL_ENV=D:\FINAL_YEAR_PROJECT\sign-language-recognition-system\Backend\sign_env
 
 if not defined PROMPT set PROMPT=$P$G
 

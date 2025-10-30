@@ -1,8 +1,36 @@
+# venv/
+# _pycache_/
+# *.pyc
+# *.pyo
+# *.pyd
+# *.dll
+# *.so
+# *.dylib
+
+
+
+
+# Python virtual environments
 venv/
-_pycache_/
-*.pyc
-*.pyo
-*.pyd
-*.dll
+sign_env/
+.env/
+.env*/
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Shared libs
 *.so
 *.dylib
+*.dll
+*.lib
+
+# Logs & data
+*.log
+*.csv
+*.dat
+
+# OS files
+.DS_Store
+Thumbs.db
