@@ -266,7 +266,7 @@ const App = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🌐 Sign Language Recognition & Translation</h1>
+        <h1>🌐 Sign Language Recognition System</h1>
         <div className="status-indicators">
           <span className={`connection-status ${isConnected ? 'connected' : 'disconnected'}`}>
             {isConnected ? '✅ Connected' : '❌ Disconnected'}
@@ -383,12 +383,6 @@ const App = () => {
                       {translatedText}
                     </div>
                     <div className="translation-actions">
-                      <button 
-                        onClick={speakTranslatedText} 
-                        className="control-button speak-translation-button"
-                      >
-                        🔊 Speak Translation
-                      </button>
                       <button 
                         onClick={() => copyToClipboard(translatedText)} 
                         className="control-button copy-translation-button"
