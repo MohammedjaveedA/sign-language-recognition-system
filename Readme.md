@@ -1,4 +1,4 @@
-# 🌐 Sign Language Recognition & Translation System
+# 🌐 Sign Language Recognition System
 
 A *real-time sign language recognition system* that uses *computer vision* and *machine learning* to detect hand signs and translate them into multiple languages.  
 
