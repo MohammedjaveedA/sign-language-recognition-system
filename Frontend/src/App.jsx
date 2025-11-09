@@ -401,7 +401,6 @@ const App = () => {
                 <li>✅ Show a sign → it appears in "Current Sign"</li>
                 <li>✅ Click "Translate Current Sign" to translate to selected language</li>
                 <li>✅ Use "Speak" to hear the English sign</li>
-                <li>✅ Use "Speak Translation" to hear the translated word</li>
                 <li>✅ Select language from dropdown in header</li>
               </ul>
             </div>

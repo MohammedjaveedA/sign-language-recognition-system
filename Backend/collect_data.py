@@ -27,7 +27,7 @@ class SignLanguageDataCollector:
     
     def create_sign_folders(self):
         """Create folders for different signs"""
-        signs = ['Yes','hello','Thank You','No']
+        signs = ['Water','Yes','hello','Thank You','No']
         for sign in signs:
             sign_path = os.path.join(self.data_dir, sign)
             if not os.path.exists(sign_path):
@@ -161,7 +161,7 @@ class SignLanguageDataCollector:
         """Run the complete data collection process with preprocessing"""
         self.create_sign_folders()
         
-        signs = ['Yes','hello','Thank You','No']
+        signs = ['Water','Yes','hello','Thank You','No']
         
         print("=== Enhanced Sign Language Data Collection ===")
         print("This tool now includes advanced image preprocessing for better accuracy.")

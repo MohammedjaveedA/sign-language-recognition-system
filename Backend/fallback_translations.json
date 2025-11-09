@@ -1,0 +1,72 @@
+{
+  "en": {
+    "hello": "hello",
+    "thank you": "thank you",
+    "thanks": "thanks",
+    "yes": "yes",
+    "no": "no",
+    "please": "please",
+    "sorry": "sorry",
+    "goodbye": "goodbye",
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "water": "water"
+  },
+  "ka": {
+    "hello": "ನಮಸ್ಕಾರ",
+    "thank you": "ಧನ್ಯವಾದಗಳು",
+    "thanks": "ಧನ್ಯವಾದಗಳು",
+    "yes": "ಹೌದು",
+    "no": "ಇಲ್ಲ",
+    "please": "ದಯವಿಟ್ಟು",
+    "sorry": "ಕ್ಷಮಿಸಿ",
+    "goodbye": "ವಿದಾಯ",
+    "1": "೧",
+    "2": "೨",
+    "3": "೩",
+    "water": "ನೀರು"
+  },
+  "hi": {
+    "hello": "नमस्ते",
+    "thank you": "धन्यवाद",
+    "thanks": "शुक्रिया",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "please": "कृपया",
+    "sorry": "माफ़ कीजिए",
+    "goodbye": "अलविदा",
+    "1": "१",
+    "2": "२",
+    "3": "३",
+    "water": "पानी"
+  },
+  "bn": {
+    "hello": "হ্যালো",
+    "thank you": "ধন্যবাদ",
+    "yes": "হ্যাঁ",
+    "no": "না",
+    "water": "পানি"
+  },
+  "ta": {
+    "hello": "வணக்கம்",
+    "thank you": "நன்றி",
+    "yes": "ஆம்",
+    "no": "இல்லை",
+    "water": "தண்ணீர்"
+  },
+  "te": {
+    "hello": "హలో",
+    "thank you": "ధన్యవాదాలు",
+    "yes": "అవును",
+    "no": "కాదు",
+    "water": "నీరు"
+  },
+  "ml": {
+    "hello": "ഹലോ",
+    "thank you": "നന്ദി",
+    "yes": "അതെ",
+    "no": "ഇല്ല",
+    "water": "വെള്ളം"
+  }
+}
