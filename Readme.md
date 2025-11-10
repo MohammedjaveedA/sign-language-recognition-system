@@ -10,7 +10,7 @@ Built with *React (frontend), **Flask (backend), and **MediaPipe (hand tracking)
 
 - 🎥 *Real-time Sign Recognition* — Detects hand signs using a live webcam feed.  
 - 🌍 *Multi-language Translation* — Translates recognized signs into multiple languages.  
-- 🔊 *Text-to-Speech* — Speaks both the original and translated text aloud.  
+- 🔊 *Text-to-Speech* — Speaks the original text aloud.  
 
 ---
 
