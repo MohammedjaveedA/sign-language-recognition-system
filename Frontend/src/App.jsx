@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css';
@@ -19,8 +18,13 @@ const App = () => {
   const [isTranslating, setIsTranslating] = useState(false);
   const [showTranslation, setShowTranslation] = useState(false);
 
+  // Available Signs State
+  const [availableSigns, setAvailableSigns] = useState([]);
+  const [isLoadingSigns, setIsLoadingSigns] = useState(false);
+
   const socketRef = useRef(null);
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     console.log('🔌 Connecting to WebSocket server...');
@@ -36,6 +40,8 @@ const App = () => {
       console.log('✅ Connected to server');
       setIsConnected(true);
       setError('');
+      // Load available signs when connected
+      loadAvailableSigns();
     });
 
     socketRef.current.on('disconnect', (reason) => {
@@ -95,6 +101,11 @@ const App = () => {
       setShowTranslation(true);
     });
 
+    socketRef.current.on('available_signs_updated', (data) => {
+      console.log('🔄 Available signs updated:', data.signs);
+      setAvailableSigns(data.signs || []);
+    });
+
     socketRef.current.on('error', (data) => {
       console.error('❌ Server error:', data.message);
       setError(data.message);
@@ -123,6 +134,21 @@ const App = () => {
       setTargetLanguage(data.current_language);
     } catch (error) {
       console.error('Failed to load languages:', error);
+    }
+  };
+
+  const loadAvailableSigns = async () => {
+    try {
+      setIsLoadingSigns(true);
+      const response = await fetch('http://localhost:5000/api/available-signs');
+      const data = await response.json();
+      setAvailableSigns(data.signs || []);
+    } catch (error) {
+      console.error('Failed to load available signs:', error);
+      // Fallback to default signs if API fails
+      setAvailableSigns(['Hello', 'Thank You', 'Yes', 'No', 'Water','1','2','3','4']);
+    } finally {
+      setIsLoadingSigns(false);
     }
   };
 
@@ -203,6 +229,10 @@ const App = () => {
     }
   };
 
+  const refreshAvailableSigns = () => {
+    loadAvailableSigns();
+  };
+
   const startRecognition = () => {
     if (socketRef.current && isConnected) {
       setError('');
@@ -237,7 +267,7 @@ const App = () => {
     }
   };
 
-  // Simple Video Feed
+  // Video Feed with Detection Area
   const VideoFeed = () => {
     if (!videoFrame) {
       return (
@@ -247,18 +277,42 @@ const App = () => {
             <p>{isProcessing ? 'Starting camera...' : 'Camera not active'}</p>
             {isProcessing && <div className="loading-spinner"></div>}
           </div>
+          {/* Detection area overlay for placeholder */}
+          <div className="detection-area-overlay">
+            <div className="detection-box">
+              <div className="corner top-left"></div>
+              <div className="corner top-right"></div>
+              <div className="corner bottom-left"></div>
+              <div className="corner bottom-right"></div>
+              <div className="detection-label">
+                👆 Hand Detection Area
+              </div>
+            </div>
+          </div>
         </div>
       );
     }
 
     return (
-      <div className="video-container">
+      <div className="video-container" ref={containerRef}>
         <img 
           ref={videoRef}
           src={videoFrame} 
           alt="Live Recognition Feed" 
           className="video-feed"
         />
+        {/* Detection area overlay */}
+        <div className="detection-area-overlay">
+          <div className={`detection-box ${handsDetected ? 'hands-detected' : ''}`}>
+            <div className="corner top-left"></div>
+            <div className="corner top-right"></div>
+            <div className="corner bottom-left"></div>
+            <div className="corner bottom-right"></div>
+            <div className="detection-label">
+              {handsDetected ? '✅ Hand Detected' : '👆 Show Hand Here'}
+            </div>
+          </div>
+        </div>
       </div>
     );
   };
@@ -299,36 +353,76 @@ const App = () => {
       )}
 
       <div className="main-content">
-        <div className="video-section">
-          <div className="video-container">
-            <VideoFeed />
+        {/* Left Section - Video and Available Signs */}
+        <div className="left-section">
+          <div className="video-section">
+            <div className="video-container-wrapper">
+              <VideoFeed />
+            </div>
+
+            <div className="controls">
+              <button 
+                onClick={startRecognition} 
+                disabled={!isConnected || isProcessing}
+                className="control-button start-button"
+              >
+                {isProcessing ? '⏳ Starting...' : '🎬 Start Recognition'}
+              </button>
+              <button 
+                onClick={stopRecognition} 
+                disabled={!isConnected || !isProcessing}
+                className="control-button stop-button"
+              >
+                ⏹️ Stop Recognition
+              </button>
+              <button 
+                onClick={speakText} 
+                disabled={!prediction}
+                className="control-button speak-button"
+              >
+                🔊 Speak
+              </button>
+            </div>
           </div>
 
-          <div className="controls">
-            <button 
-              onClick={startRecognition} 
-              disabled={!isConnected || isProcessing}
-              className="control-button start-button"
-            >
-              {isProcessing ? '⏳ Starting...' : '🎬 Start Recognition'}
-            </button>
-            <button 
-              onClick={stopRecognition} 
-              disabled={!isConnected || !isProcessing}
-              className="control-button stop-button"
-            >
-              ⏹️ Stop Recognition
-            </button>
-            <button 
-              onClick={speakText} 
-              disabled={!prediction}
-              className="control-button speak-button"
-            >
-              🔊 Speak
-            </button>
+          {/* Available Signs Section - Below buttons */}
+          <div className="available-signs-section">
+            <div className="section-header">
+              <h3>Available Signs</h3>
+              <button 
+                onClick={refreshAvailableSigns}
+                disabled={isLoadingSigns}
+                className="refresh-button"
+                title="Refresh signs"
+              >
+                {isLoadingSigns ? '🔄' : '🔄'}
+              </button>
+            </div>
+            
+            {isLoadingSigns ? (
+              <div className="loading-signs">Loading signs...</div>
+            ) : (
+              <div className="signs-grid">
+                {availableSigns.map((sign, index) => (
+                  <div 
+                    key={index}
+                    className={`sign-item ${prediction === sign ? 'active' : ''}`}
+                  >
+                    {sign}
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {availableSigns.length === 0 && !isLoadingSigns && (
+              <div className="no-signs">
+                No signs available. Train the model first.
+              </div>
+            )}
           </div>
         </div>
 
+        {/* Right Section - Recognition Results and Translation */}
         <div className="recognition-section">
           <div className="recognition-info">
             <h2>Recognition Results</h2>
@@ -359,7 +453,7 @@ const App = () => {
               </div>
             </div>
 
-            {/* Translation Section - Simplified */}
+            {/* Translation Section */}
             <div className="translation-section">
               <h3>
                 Translation 
@@ -374,7 +468,7 @@ const App = () => {
                   disabled={!prediction || isTranslating}
                   className="control-button translate-button"
                 >
-                  {isTranslating ? '🔄 Translating...' : '🌐 Translate Current Sign'}
+                  {isTranslating ? '🔄 Translating...' : '🌐 Translate'}
                 </button>
                 
                 {showTranslation && translatedText && (
@@ -396,12 +490,13 @@ const App = () => {
             </div>
 
             <div className="performance-tips">
-              <h3>How it works:</h3>
+              <h3>Tips for Better Detection:</h3>
               <ul>
-                <li>✅ Show a sign → it appears in "Current Sign"</li>
-                <li>✅ Click "Translate Current Sign" to translate to selected language</li>
-                <li>✅ Use "Speak" to hear the English sign</li>
-                <li>✅ Select language from dropdown in header</li>
+                <li>✅ Place your hand inside the green detection area</li>
+                <li>✅ Ensure good lighting on your hand</li>
+                <li>✅ Keep background simple and uncluttered</li>
+                <li>✅ Make clear, distinct signs</li>
+                <li>✅ Hold each sign steady for 1-2 seconds</li>
               </ul>
             </div>
           </div>

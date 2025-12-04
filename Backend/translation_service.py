@@ -111,12 +111,13 @@ class TranslationService:
     def _get_default_fallback_translations(self):
         """Comprehensive default fallback translations for all languages"""
         return {
-            'en': {
+'en': {
     'hello': 'hello',
     'thank you': 'thank you',
     'yes': 'yes',
     'no': 'no',
     'water': 'water',
+    '1': 'one',
 },
 'ka': {
     'hello': 'ನಮಸ್ಕಾರ',
@@ -124,6 +125,7 @@ class TranslationService:
     'yes': 'ಹೌದು',
     'no': 'ಇಲ್ಲ',
     'water': 'ನೀರು',
+    '1': 'ಒಂದು',
 },
 'hi': {
     'hello': 'नमस्ते',
@@ -131,13 +133,15 @@ class TranslationService:
     'yes': 'हाँ',
     'no': 'नहीं',
     'water': 'पानी',
+    '1': 'एक',
 },
 'bn': {
     'hello': 'হ্যালো',
     'thank you': 'ধন্যবাদ',
-    'yes': 'হ্যাঁ',
+    'yes': 'হাঁ',
     'no': 'না',
     'water': 'পানি',
+    '1': 'এক',
 },
 'ta': {
     'hello': 'வணக்கம்',
@@ -145,6 +149,7 @@ class TranslationService:
     'yes': 'ஆம்',
     'no': 'இல்லை',
     'water': 'தண்ணீர்',
+    '1': 'ஒன்று',
 },
 'te': {
     'hello': 'హలో',
@@ -152,6 +157,7 @@ class TranslationService:
     'yes': 'అవును',
     'no': 'కాదు',
     'water': 'నీరు',
+    '1': 'ఒకటి',
 },
 'ml': {
     'hello': 'ഹലോ',
@@ -159,9 +165,9 @@ class TranslationService:
     'yes': 'അതെ',
     'no': 'ഇല്ല',
     'water': 'വെള്ളം',
+    '1': 'ഒന്ന്',
 }
-
-        }
+}
     
     def _save_fallback_translations(self):
         """Save fallback translations to JSON file"""
